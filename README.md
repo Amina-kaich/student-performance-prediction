@@ -1,6 +1,6 @@
-# 🎓 Student Performance Prediction
+#  Student Performance Prediction
 
-**ML Pipeline — Amina Kaich | ENIT 2025-2026**
+**ML Pipeline**
 
 Prédiction des notes de mathématiques d'étudiants à partir de facteurs socio-démographiques et scolaires.
 
@@ -25,7 +25,7 @@ student_performance_project/
 
 ---
 
-## 📊 Dataset
+##  Dataset
 
 | Feature | Type | Description |
 |---|---|---|
@@ -40,7 +40,7 @@ student_performance_project/
 
 ---
 
-## 🔬 Pipeline ML
+##  Pipeline ML
 
 1. **Chargement** — lecture CSV avec Pandas
 2. **Exploration** — statistiques descriptives, vérification des valeurs manquantes
@@ -53,19 +53,19 @@ student_performance_project/
 
 ---
 
-## 📈 Résultats
+##  Résultats
 
 | Modèle | R² | MSE |
 |---|---|---|
-| Linear Regression (baseline) | ~0.21 | ~186 |
-| **Random Forest** | **~0.38** | **~146** |
+| Linear Regression (baseline) | ~0.88 | ~29.1 |
+| **Random Forest** | **~0.85** | **~36.6** |
 
 > Le Random Forest surpasse significativement la régression linéaire.  
 > Les features les plus importantes sont le **lunch** (indicateur socio-économique) et le **test preparation course**.
 
 ---
 
-## 🚀 Installation & Exécution
+##  Installation & Exécution
 
 ```bash
 # 1. Cloner le repo
@@ -81,7 +81,7 @@ python src/train.py
 
 ---
 
-## 🛠️ Stack technique
+##  Stack technique
 
 - **Python 3.10+**
 - **Pandas** — manipulation des données
@@ -91,7 +91,7 @@ python src/train.py
 
 ---
 
-## 💡 Points clés
+##  Points clés
 
 - Comparaison baseline vs modèle avancé
 - Pipeline reproductible avec random_state fixe
@@ -99,5 +99,3 @@ python src/train.py
 - Architecture modulaire et commentée
 
 ---
-
-*Projet académique — ENIT Tunis | Télécommunications 2ème année*
