@@ -1,6 +1,5 @@
 """
 Student Performance Prediction
-ML Pipeline — Amina Kaich, ENIT 2025-2026
 """
 
 import pandas as pd
@@ -22,16 +21,16 @@ OUTPUT_PATH = os.path.join(os.path.dirname(__file__), "..", "outputs")
 os.makedirs(OUTPUT_PATH, exist_ok=True)
 
 df = pd.read_csv(DATA_PATH)
-print("✅ Dataset chargé :", df.shape)
+print("Dataset chargé :", df.shape)
 print(df.head())
 
 # ─────────────────────────────────────────
 # 2. EXPLORATION & NETTOYAGE
 # ─────────────────────────────────────────
-print("\n📊 Statistiques descriptives :")
+print("\n Statistiques descriptives :")
 print(df.describe())
 
-print("\n🔍 Valeurs manquantes :")
+print("\n Valeurs manquantes :")
 print(df.isnull().sum())
 
 # Vérification — aucune valeur manquante dans ce dataset
@@ -43,7 +42,7 @@ assert df.isnull().sum().sum() == 0, "Des valeurs manquantes ont été détecté
 
 # Encodage des variables catégorielles (One-Hot Encoding)
 df_encoded = pd.get_dummies(df, drop_first=True)
-print("\n📐 Colonnes après encodage :", list(df_encoded.columns))
+print("\n Colonnes après encodage :", list(df_encoded.columns))
 
 # Target : math score (note la plus difficile à prédire)
 TARGET = "math score"
@@ -56,7 +55,7 @@ y = df_encoded[TARGET]
 X_train, X_test, y_train, y_test = train_test_split(
     X, y, test_size=0.2, random_state=42
 )
-print(f"\n📦 Train : {X_train.shape[0]} | Test : {X_test.shape[0]}")
+print(f"\n  Train : {X_train.shape[0]} | Test : {X_test.shape[0]}")
 
 # ─────────────────────────────────────────
 # 5. NORMALISATION
@@ -81,7 +80,7 @@ for name, model in models.items():
     mse = mean_squared_error(y_test, y_pred)
     r2 = r2_score(y_test, y_pred)
     results[name] = {"model": model, "y_pred": y_pred, "MSE": mse, "R2": r2}
-    print(f"\n🤖 {name}")
+    print(f"\n  {name}")
     print(f"   MSE : {mse:.2f}")
     print(f"   R²  : {r2:.4f}")
 
@@ -116,7 +115,7 @@ plt.title("Feature Importance — Random Forest", fontsize=14)
 plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT_PATH, "feature_importance.png"), dpi=150)
 plt.close()
-print("📊 Graphique sauvegardé : feature_importance.png")
+print(" Graphique sauvegardé : feature_importance.png")
 
 # — Distribution des scores
 fig, axes = plt.subplots(1, 3, figsize=(14, 4))
@@ -129,7 +128,7 @@ plt.suptitle("Distribution des scores par matière", fontsize=14)
 plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT_PATH, "score_distributions.png"), dpi=150)
 plt.close()
-print("📊 Graphique sauvegardé : score_distributions.png")
+print(" Graphique sauvegardé : score_distributions.png")
 
 # — Comparaison des modèles
 model_names = list(results.keys())
@@ -151,9 +150,9 @@ for i, v in enumerate(mse_scores):
 plt.tight_layout()
 plt.savefig(os.path.join(OUTPUT_PATH, "model_comparison.png"), dpi=150)
 plt.close()
-print("📊 Graphique sauvegardé : model_comparison.png")
+print(" Graphique sauvegardé : model_comparison.png")
 
-print("\n✅ Pipeline terminé avec succès !")
+print("\n Pipeline terminé avec succès !")
 print(f"   Meilleur modèle : {best_model_name}")
 print(f"   R² : {results[best_model_name]['R2']:.4f}")
 print(f"   MSE : {results[best_model_name]['MSE']:.2f}")
